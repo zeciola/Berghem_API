@@ -4,11 +4,19 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+ipython = "*"
+flask-shell-ipython = "*"
+flask-testing = "*"
+ipdb = "*"
 
 [packages]
 flask = "*"
 flask-pymongo = "*"
 flask-restplus = "*"
+flask-script = "*"
+pyjwt = "*"
+flask-bcrypt = "*"
+flask-mongoalchemy = {path = "./Flask-MongoAlchemy-0.7.3.tar.gz"}
 
 [requires]
 python_version = "3.7"
