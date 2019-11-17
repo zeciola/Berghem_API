@@ -2,37 +2,32 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'The secret key of the lords')
     DEBUG = False
 
+
 class DevelopmentConfig(Config):
     DEBUG = True
-    MONGODB_SETTINGS = {
-        'db': 'BerghemDB',
-        'host': 'localhost',
-        'port': '27017'
-    }
-    MONGODB_DATABASE_URI = f'mongodb://{MONGODB_SETTINGS["host"]}:{MONGODB_SETTINGS["port"]}/{MONGODB_SETTINGS["db"]}'
+    SQLAlCHEMY_DATABASE_URI = 'sqlite:////tmp/berghem_api.db'
+    SQLAlCHEMY_TRACK_MODIFICATIONS = False
+
 
 class TestingConfig(Config):
     DEBUG = True
     TESTING = True
-    MONGODB_SETTINGS = {
-        'db': 'BerghemDB',
-        'host': 'localhost',
-        'port': '27017'
-    }
-    MONGODB_DATABASE_URI = f'mongodb://{MONGODB_SETTINGS["host"]}:{MONGODB_SETTINGS["port"]}/{MONGODB_SETTINGS["db"]}'
+    SQLAlCHEMY_DATABASE_URI = 'sqlite:////tmp/berghem_api_test.db'
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
+    SQLAlCHEMY_TRACK_MODIFICATIONS = False
+
 
 class ProductionConfig(Config):
     DEBUG = False
-    MONGODB_SETTINGS = {
-        'db': 'BerghemDB',
-        'host': 'localhost',
-        'port': '27017'
-    }
-    MONGODB_DATABASE_URI = f'mongodb://{MONGODB_SETTINGS["host"]}:{MONGODB_SETTINGS["port"]}/{MONGODB_SETTINGS["db"]}'
+    # SQLAlCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'berghem_api.db')
+    # PRESERVE_CONTEXT_ON_EXCEPTION = False
+    # SQLAlCHEMY_TRACK_MODIFICATIONS = False
+
 
 config_by_name = dict(
     dev=DevelopmentConfig,
