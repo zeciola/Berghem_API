@@ -21,11 +21,16 @@ class CashChanger:
                     cash_change = round(cash_change, 2)
                     cash_count += 1
                     if money_bills:
-                        if {f'money_{cash}': cash_count}.keys() == money_bills[-1].keys():
+                        if money_bills[-1].get(f'money_{cash}'):
                             money_bills[-1].update({f'money_{cash}': cash_count})
                         else:
                             money_bills.append({f'money_{cash}': cash_count})
                     else:
                         money_bills.append({f'money_{cash}': cash_count})
                 cash_count = 0
-        return dict(cash_change=cash_change_view, money_bills=money_bills)
+        return dict(
+            product_value=product_value,
+            client_cash=client_cash,
+            cash_change=cash_change_view,
+            money_bills=money_bills
+        )
