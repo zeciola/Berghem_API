@@ -13,7 +13,7 @@ make test
 ```
 
 ### Use Swagger:
-add gif
+![Swagger Demo](demo/swagger.gif)
 
 ### Project Routes:
 ```
