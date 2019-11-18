@@ -23,6 +23,10 @@ manager.add_command('db', MigrateCommand)
 def make_shell_context():
     return dict(app=app, db=db, models=model)
 
+@manager.command
+def routes():
+    result = app.url_map
+    return result
 
 @manager.command
 def run():
