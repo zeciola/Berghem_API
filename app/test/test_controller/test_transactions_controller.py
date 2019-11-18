@@ -52,6 +52,7 @@ class TestTransactionsCashChange(FlaskBaseTest):
         result = self.client.post(
             'api/transaction/cash_change',
             json={
+                "product_name": 'AAA',
                 "product_value": 5458.54,
                 "client_cash": 7985.12
             }
@@ -62,7 +63,7 @@ class TestTransactionsCashChange(FlaskBaseTest):
         expect = {
             "status": "success",
             "msg": "Transaction as confirmed",
-            "product_name": "dasadasd dWW",
+            "product_name": "AAA",
             "cash_change_calculator": {
                 "product_value": 5458.54,
                 "client_cash": 7985.12,
@@ -99,6 +100,7 @@ class TestTransactionsCashChange(FlaskBaseTest):
         result = self.client.post(
             'api/transaction/cash_change',
             json={
+                "product_name": 'AAA',
                 "product_value": 1100,
                 "client_cash": 200
             }
@@ -114,6 +116,7 @@ class TestTransactionsCashChange(FlaskBaseTest):
         result = self.client.post(
             'api/transaction/cash_change',
             json={
+                "product_name": 'AAA',
                 "product_value": 1100,
                 # "client_cash": 200
             }
@@ -133,6 +136,7 @@ class TestTransactionsCashChange(FlaskBaseTest):
         result = self.client.post(
             'api/transaction/cash_change',
             json={
+                "product_name": 'AAA',
                 # "product_value": 1100,
                 "client_cash": 200
             }
